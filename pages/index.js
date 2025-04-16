@@ -27,8 +27,7 @@ export default function Home() {
               <th className="border px-2 py-1">Email</th>
               <th className="border px-2 py-1">Tarjeta</th>
               <th className="border px-2 py-1">Monto</th>
-              <th className="border px-2 py-1">Editar</th>
-              <th className="border px-2 py-1">Eliminar</th>
+              <th className="border px-2 py-1">Acciones</th>
             </tr>
           </thead>
           <tbody>
