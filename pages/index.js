@@ -39,15 +39,17 @@ export default function Home() {
                 <td className="border px-2 py-1">{p.tarjeta}</td>
                 <td className="border px-2 py-1">{p.monto}</td>
                 <td className="border px-2 py-1">
-                <button
-                  className="bg-blue-200 px-2 py-1 rounded mr-2"
-                  onClick={() => {
-                    const confirmEdit = confirm(`¿Quieres editar el registro de "${p.Nombre}"?`);
-                    if (confirmEdit) setEditing(p);
-                  }}
+                  <button
+                    className="bg-blue-200 px-2 py-1 rounded mr-2"
+                    onClick={() => {
+                      const confirmEdit = confirm(`¿Quieres editar el registro de "${p.Nombre}"?`);
+                      if (confirmEdit) setEditing(p);
+                    }}
                   >
                     Editar
                   </button>
+                </td>
+                <td className="border px-2 py-1">
                   <button
                     className="bg-red-500 text-white px-2 py-1 rounded"
                     onClick={async () => {
