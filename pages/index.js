@@ -42,8 +42,8 @@ export default function Home() {
   <button
     className="bg-blue-200 px-2 py-1 rounded"
     onClick={() => {
-      const confirmEdit = confirm(`¿Quieres editar el registro de "${p.Nombre}"?`);
-      if (confirmEdit) setEditing(p);
+      //const confirmEdit = confirm(`¿Quieres editar el registro de "${p.Nombre}"?`);
+      /*if (confirmEdit) */ setEditing(p);
     }}
   >
     Editar
