@@ -20,6 +20,8 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ error: 'GET failed', details: err.message });
     }
+
+  //Added Save function 
   } else if (req.method === 'POST') {
     const { Nombre, Contraseña, email, tarjeta, monto } = req.body;
     try {
@@ -37,6 +39,8 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ error: 'POST failed', details: err.message });
     }
+
+  //Added Edit Fuction 
   } else if (req.method === 'PUT') {
     const { Consecutivo, Nombre, Contraseña, email, tarjeta, monto } = req.body;
     try {
@@ -54,7 +58,27 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ error: 'PUT failed', details: err.message });
     }
+
+  //Added delete function 
+  } else if (req.method === 'DELETE') {
+      const { Consecutivo } = req.body;
+    
+      if (!Consecutivo) {
+        return res.status(400).json({ error: 'Missing Consecutivo' });
+      }
+    
+      try {
+        const pool = await sql.connect(dbConfig);
+        await pool
+          .request()
+          .input('Consecutivo', sql.Int, Consecutivo)
+          .query('DELETE FROM Pruebas WHERE Consecutivo = @Consecutivo');
+        res.status(200).json({ success: true });
+      } catch (err) {
+        res.status(500).json({ error: 'DELETE failed', details: err.message });
+      }    
   } else {
     res.status(405).json({ error: 'Method not allowed' });
-  }
+  }  
+
 }

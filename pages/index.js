@@ -43,6 +43,32 @@ export default function Home() {
                     Editar
                   </button>
                 </td>
+                <td className="border px-2 py-1">
+                  <button
+                    className="bg-blue-200 px-2 py-1 rounded mr-2"
+                    onClick={() => setEditing(p)}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                    onClick={async () => {
+                      const confirmDelete = confirm(`¿Seguro que quieres eliminar "${p.Nombre}"?`);
+                      if (confirmDelete) {
+                        await fetch('/api/pruebas', {
+                          method: 'DELETE',
+                          headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify({ Consecutivo: p.Consecutivo })
+                        });
+                        fetchData(); // Refresh after delete
+                      }
+                    }}
+                  >
+                    Eliminar
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
